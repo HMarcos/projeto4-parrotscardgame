@@ -74,7 +74,7 @@ header h1 {
     position: absolute;
     backface-visibility: hidden;
 
-    transition: all .5s;
+    transition: all 1.0s;
     transform-style: preserve-3d;
 
 }
@@ -95,6 +95,8 @@ header h1 {
 .rotacionar-frente {
     transform: rotateY(-180deg);
 }
+
+
 
 /* Layout Mobile */
 /* Largura Máxima 450px */
