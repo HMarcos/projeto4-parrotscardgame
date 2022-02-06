@@ -184,11 +184,11 @@ function montarCartasNoHTML() {
     for (let i = 0; i < cartas.length; i++) {
         let carta = cartas[i];
         divJogoDeCartas.innerHTML += `
-            <div class="carta" onclick="selecionarCarta(this, ${i})">
-            <div class="parte-frontal face">
+            <div data-identifier="card" class="carta" onclick="selecionarCarta(this, ${i})">
+            <div data-identifier="front-face" class="parte-frontal face">
                 <img src="imagens/front.png" alt="Parte Fontral da Carta">
             </div>
-            <div class="parte-traseira face">
+            <div data-identifier="back-face" class="parte-traseira face">
                 <img src="imagens/${carta.tipo}.gif" alt="${carta.tipo}">
             </div>
         `;
