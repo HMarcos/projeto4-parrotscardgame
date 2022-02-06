@@ -1,0 +1,127 @@
+/* Configuração geral */
+* {
+    box-sizing: border-box;
+}
+
+/*Configuração do body */
+body {
+    font-family: 'Roboto', sans-serif;
+
+    background-color: #EEF9BF;
+}
+
+
+/* Layout Desktop */
+
+/* Header: Título do Jogo */
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-bottom: 47px;
+}
+
+header h1 {
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+
+    color: #75B79E;
+    text-align: center;
+
+}
+
+/* Main: Conteúdo da Página 
+   Jogo de cartas */
+
+.jogo-de-cartas {
+    width: 80vw;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Cartas */
+
+.carta {
+    width: 117px;
+    height: 144px;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 34px;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    backface-visibility: hidden;
+
+    transition: all .5s;
+    transform-style: preserve-3d;
+
+}
+
+.face img {
+    width: 100px;
+    height: 100px;
+}
+
+.parte-traseira {
+    transform: rotateY(180deg);
+}
+
+.rotacionar-verso {
+    transform: rotateY(0deg);
+}
+
+.rotacionar-frente {
+    transform: rotateY(-180deg);
+}
+
+/* Layout Mobile */
+/* Largura Máxima 450px */
+@media (max-width: 450px) {
+
+    /* Título da Página */
+    header h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    /* Main: Conteúdo da Página 
+   Jogo de cartas */
+
+    .jogo-de-cartas {
+        width: 100vw;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Carta */
+    .carta {
+        margin: 0px;
+        margin-bottom: 34px;
+    }
+
+}
