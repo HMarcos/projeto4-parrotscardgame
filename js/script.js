@@ -8,6 +8,8 @@ let quantidadeDeJogadas = 0;
 let tiposDeCartas = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 let tipoDeCartasSelecionadas = [];
 let cartas = [];
+/* Cada carta criada é um objeto que contém o seu tipo 
+   e uma flag indicando se ela já foi selecionada */
 
 /* Controle do Jogo */
 let primeiraJogada = true;
@@ -18,11 +20,17 @@ let divSegundaCarta = null
 
 let jogoHabilitado = true;
 
-// Div que representa aonde as cartas estão distribuídas
-let divJogoDeCartas = document.querySelector(".jogo-de-cartas");
+// Flag que indica o primeiro clique do jogo para iniciar o relógio
+let primeiroClique = true;
 
-/* Cada carta criada é um objeto que contém o seu tipo 
-   e uma flag indicando se ela já foi selecionada */
+
+// Div que representa aonde as cartas estão distribuídas
+const divJogoDeCartas = document.querySelector(".jogo-de-cartas");
+
+// Div que representa o relógio
+const divRelogio = document.querySelector(".relogio");
+let intervaloRelogio = null;
+
 
 
 function selecionarCarta(divCarta, indiceCarta) {
@@ -34,6 +42,13 @@ function selecionarCarta(divCarta, indiceCarta) {
     console.log(`Tipo da Carta: ${cartas[indiceCarta].tipo}`)
     console.log(`Carta Selecionada: ${cartas[indiceCarta].selecionada}`)
 
+    // Verifica se é o primeiro clique para habilitar o relogio
+    if (primeiroClique) {
+        intervaloRelogio = setInterval(atualizarRelogio, 1000);
+        primeiroClique = false;
+    }
+    
+    
     // Verifica se a carta já está virada 
     if (!cartas[indiceCarta].selecionada && jogoHabilitado) {
 
@@ -197,10 +212,19 @@ function montarCartasNoHTML() {
 
 // Encerra o jogo quando todos os pares forem encontrados
 function encerrarJogo() {
+    // Encerra o relogio
+    clearInterval(intervaloRelogio);
 
-    alert("Jogo Encerrado!!");
+    // Obtem o tempo de jogo
+    const tempoJogado = parseInt(divRelogio.innerHTML);
+    
+    alert(`Você ganhou em ${quantidadeDeJogadas} jogadas e em ${tempoJogado} segundos!`);
 }
 
+// Atualiza o relógio
+function atualizarRelogio(){
+    divRelogio.innerHTML = parseInt(divRelogio.innerHTML) + 1;
+}
 
 // Embaralhas as cartas
 function embaralharCartas(listaDeCartas) {
